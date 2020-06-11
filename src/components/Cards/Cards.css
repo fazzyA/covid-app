@@ -1,0 +1,15 @@
+.carsd-root{
+    border:1px solid grey;
+    display: inline-block;
+    height: auto;
+}
+.pos {
+    margin-bottom: 12px;
+  }
+  .paper-root{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 5px auto;
+      /* width: 950px; */
+      margin-left: 30px;
+  }

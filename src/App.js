@@ -1,22 +1,33 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import './App.css';
-import {Card, Chart, Country} from './components'
-// import getData from './Api'
-import axios from 'axios';
+import {Cards, Chart, Country} from './components'
+import getData from './Api'
+import SimplePaperCard from './Paper';
+
 function App() {
-  const url ='https://api.covid19api.com/summary';
-useEffect(()=>{
-  axios.get(url)
- .then(res => {
- console.log(res);
-})
-},[])
+ const [data,setData]=useState({});
+ // const url ='https://api.covid19api.com/summary';
+  useEffect(
+    () =>{
+
+     async function forData(){
+      const myData = await getData();
+      console.log(myData.data.Global);
+      const holdData=myData.data.Global
+      setData(holdData)
+
+     }//forData end
+     forData();
+
+
+    } ,[]
+  ); //useEffect end
   return (
     <div className="App">
       <h1>Covid App</h1>
-      <Card />
-      <Chart />
-      <Country />
+      <SimplePaperCard data={data} />
+      {/* <Chart/>
+      <Country /> */}
     </div>
   );
 }
