@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 const Cards = ({data}) => {
 
-    console.log(data);
+    //console.log(data);
     const {NewConfirmed,NewDeaths,NewRecovered} = data;
 
     return(
