@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Doughnut, Line,Bar } from 'react-chartjs-2';
+import { Line,Bar } from 'react-chartjs-2';
 import {getDailyStatus} from '../../Api';
 import styles from './Chart.module.css'
 const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
