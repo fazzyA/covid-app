@@ -9,7 +9,7 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
       () =>{
        async function forData(){
         const myData = await getDailyStatus();
-        console.log(myData);
+       // console.log(myData);
         //const holdData=myData.data;
         setdaily(myData)
   

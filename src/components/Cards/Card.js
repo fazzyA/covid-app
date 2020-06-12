@@ -1,4 +1,5 @@
 import React from 'react';
+import CountUp from 'react-countup';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
@@ -23,21 +24,24 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function SimplePaperCard({data}) {
   const classes = useStyles();
-  const {NewConfirmed,NewDeaths,NewRecovered} = data;
-
+  const {confirmed,deaths,recovered,lastUpdate} = data;
+  console.log(confirmed)
+if(!confirmed){
+  return 'data is loading...'
+}
   return (
     <div className={`${classes.root} card-main`}>
-      <Paper variant="square" elevation={5} component='div'>   
+      <Paper variant="square" elevation={4} component='div'>   
        <Card className='card-root1'>
       <CardContent>
         <Typography className='new' color="textSecondary" gutterBottom>
           New Confirmed Cases
         </Typography>
         <Typography className='pos' variant="h5" component="h2">
-        {NewConfirmed}
+        <CountUp start={0} end={confirmed.value} duration={2.75} separator="," />
         </Typography>
         <Typography variant="body2" component="p">
-          Dated: {Date()}
+          Dated: {new Date(lastUpdate).toDateString()}
         </Typography>
       </CardContent>
     </Card>
@@ -49,10 +53,10 @@ export default function SimplePaperCard({data}) {
           New Confirmed Deaths
         </Typography>
         <Typography className='pos' variant="h5" component="h2">
-        {NewDeaths}
+        <CountUp start={0} end={deaths.value} duration={2.75} separator="," />   
         </Typography>
-        <Typography variant="body2" component="p">
-          Dated: {Date()}
+         <Typography variant="body2" component="p">
+          Dated: {new Date(lastUpdate).toDateString()}
         </Typography>
       </CardContent>
     </Card>
@@ -64,10 +68,9 @@ export default function SimplePaperCard({data}) {
           New Confirmed Recovered
         </Typography>
         <Typography className='pos' variant="h5" component="h2">
-        {NewRecovered}
-        </Typography>
+        <CountUp start={0} end={recovered.value} duration={2.75} separator="," />        </Typography>
         <Typography variant="body2" component="p">
-          Dated: {Date()}
+          Dated: {new Date(lastUpdate).toDateString()}
         </Typography>
       </CardContent>
     </Card>

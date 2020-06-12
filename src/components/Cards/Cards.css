@@ -5,13 +5,16 @@ float: left;}
   }
   .death{
     color:red !important;
-    
+    font-weight: 600 !important;
+
 }.new{
     color:blue !important;
+    font-weight: 600 !important;
     
 }.rec{
     color:green !important;
-    
+    font-weight: 600 !important;
+   
 }
 .card-root1{
     background-color: rgb(125, 188, 251) !important;
@@ -21,5 +24,5 @@ float: left;}
     background-color: rgb(246, 155, 139) !important;
 }
 .card-root3{
-    background-color: rgb(59, 124, 57) !important;
+    background-color: rgb(117, 148, 116) !important;
 }
