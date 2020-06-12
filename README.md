@@ -1,4 +1,6 @@
-[See demo](http://covid-app-faizaazizkhan.surge.sh/)
+## [See demo](http://covid-app-faizaazizkhan.surge.sh/)
+
+## http://covid-app-faizaazizkhan.surge.sh/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
