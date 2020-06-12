@@ -7,7 +7,6 @@ import './Country.css';
 
 const Countries = ({ handleCountryChange }) => {
     const [countries, setCountries] = useState([]);
-    const [country, setCountry] = useState([]);
 
   useEffect(() => {
     const fetchAPI = async () => {
