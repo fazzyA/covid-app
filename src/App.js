@@ -1,32 +1,37 @@
 import React, {useEffect,useState} from 'react';
 import './App.css';
-import {Cards, Chart, Country} from './components'
-import {getData} from './Api'
-import SimplePaperCard from './Paper';
+import {Cards, Chart, Countries} from './components'
+import {getAllData} from './Api'
 
-function App() {
- const [data,setData]=useState({});
-  useEffect(
-    () =>{
-     async function forData(){
-      const myData = await getData();
-     // console.log(myData.data);
-      const holdData=myData.data.Global
-      setData(holdData)
+class App extends React.Component {
+  state = {
+    data: {},
+    country: '',
+  }  
 
-     }//forData end
-     forData();
-    } ,[]
-  ); //useEffect end
-  
+  async componentDidMount() {
+    const data = await getAllData();
+    console.log(data)
+    this.setState({ data });
+  }
+
+  handleCountryChange = async (country) => {
+    const data = await getAllData(country);
+
+    this.setState({ data, country: country });
+  }
+  render(){
+    const { data, country } = this.state;
   return (
     <div className="App">
       <h1>Covid App</h1>
-      <SimplePaperCard data={data} />
-      <Chart/>
-      {/*<Country /> */}
-    </div>
+      <Countries handleCountryChange={this.handleCountryChange} />
+      <Cards data={data} />
+      <Chart data={data} country={country} />
+      
+      </div>
   );
+  }//render
 }
 
 export default App;

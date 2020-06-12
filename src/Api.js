@@ -1,6 +1,6 @@
 import axios from 'axios'
 const url='https://api.covid19api.com/' //covid api
-const url2='https://covidtracking.com/api' //covid api daily
+const url2='https://covid19.mathdro.id/api' //covid api daily
 
 export const getData=async ()=>{
     try{
@@ -25,30 +25,39 @@ export const getCountry=async ()=>{
 
 export const getDailyStatus=async ()=>{
     try{
-        const res = await axios.get(`${url2}/states/daily/`)
-        return res
-    }
+        const { data } = await axios.get(`${url2}/daily`);
+  const mydaily = data.map(({ confirmed, deaths, reportDate: date }) => ({ confirmed: confirmed.total, deaths: deaths.total, date }))
+  console.log(mydaily)    
+  return mydaily;
+      }
     catch(error){
         console.log(error)
 
     }
 }//getDailyStatus func end
-export const getDailyStatus2=async ()=>{
-    try{
-        const res = await axios.get({
-            "method":"GET",
-            "url":"https://covid-19-live-stats.p.rapidapi.com/livestats",
-            "headers":{
-            "content-type":"application/octet-stream",
-            "x-rapidapi-host":"covid-19-live-stats.p.rapidapi.com",
-            "x-rapidapi-key":"203c76f2c3mshbebf654e42562f2p113197jsn3ae0378922a2",
-            "useQueryString":true
-            }
-            })
-        return res
-    }
-    catch(error){
-        console.log(error)
 
+  
+  export const getCountries = async () => {
+    try {
+      const { data: { countries } } = await axios.get(`${url2}/countries`);
+  
+      return countries.map((country) => country.name);
+    } catch (error) {
+      return error;
     }
-}//getDailyStatus2 func end
+  };
+
+  export const getAllData = async (country) => {
+    let changeableUrl = url2;
+  
+    if (country) {
+      changeableUrl = `${url2}/countries/${country}`;
+    }
+    try {
+      const { data: { confirmed, recovered, deaths, lastUpdate } } = await axios.get(changeableUrl);
+  
+      return { confirmed, recovered, deaths, lastUpdate };
+    } catch (error) {
+      return error;
+    }
+  };

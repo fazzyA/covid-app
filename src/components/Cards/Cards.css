@@ -1,15 +1,25 @@
-.carsd-root{
-    border:1px solid grey;
-    display: inline-block;
-    height: auto;
-}
+.card-main{
+float: left;}
 .pos {
     margin-bottom: 12px;
   }
-  .paper-root{
-      display: flex;
-      flex-wrap: wrap;
-      margin: 5px auto;
-      /* width: 950px; */
-      margin-left: 30px;
-  }
+  .death{
+    color:red !important;
+    
+}.new{
+    color:blue !important;
+    
+}.rec{
+    color:green !important;
+    
+}
+.card-root1{
+    background-color: dodgerblue !important;
+}
+.card-root2
+{
+    background-color: rgb(246, 155, 139) !important;
+}
+.card-root3{
+    background-color: rgb(59, 124, 57) !important;
+}
